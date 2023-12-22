@@ -3,16 +3,12 @@
 Maze::Maze() {
     nodesHeight = 50;
     nodesWidth = 100;
-    player_y = 1;
-    player_x = 1;
     init();
 }
 
 Maze::Maze(int height_in, int width_in) {
     nodesHeight = height_in;
     nodesWidth = width_in;
-    player_y = 1;
-    player_x = 1;
     init();
 }
 
@@ -22,6 +18,10 @@ Maze::~Maze() {
 
 void Maze::init() {
     std::srand ( unsigned ( std::time(0) ) );
+
+    player_node_x = 0;
+    player_node_y = 0;
+    solved = false;
 
     nodes.resize(nodesHeight);
     for (int row = 0; row < nodesHeight; ++row) {
@@ -36,6 +36,7 @@ void Maze::init() {
     winHeight = 2 * nodesHeight + 1;
     winWidth = 2 * nodesWidth + 1;
     win = newwin(winHeight, winWidth, 0, 0);
+    // keypad(win, TRUE);
     refresh();
 }
 
@@ -93,16 +94,17 @@ void Maze::draw() {
             drawNode(node_y, node_x);
         }
     }
+
+    int player_win_y = nodeToWinCoordinates(player_node_y, player_node_x).first;
+    int player_win_x = nodeToWinCoordinates(player_node_y, player_node_x).second;
+    mvwprintw(win, player_win_y, player_win_x, "o");
     wrefresh(win);
 }
 
 void Maze::dfs(int node_y, int node_x) {
-    // int win_y;
-    // int win_x;
-    // win_y = nodeToWinCoordinates(node_y, node_x).first;
-    // win_x = nodeToWinCoordinates(node_y, node_x).second;
     visited[node_y][node_x] = true;
 
+    // Randomize order in which neighbors are visited
     std::vector<int> neighbors = {0, 1, 2, 3};
     std::random_shuffle(neighbors.begin(), neighbors.end(), myrandom);
 
@@ -120,7 +122,6 @@ void Maze::dfs(int node_y, int node_x) {
                 }
                 nodes[node_y][node_x] &= 0b1110;
                 nodes[node_y][node_x + 1] &= 0b1011;
-                // mvwprintw(win, win_y, win_x + 1, " ");
                 Maze::dfs(node_y, node_x + 1);
             }
             break;
@@ -135,7 +136,6 @@ void Maze::dfs(int node_y, int node_x) {
                 }
                 nodes[node_y][node_x] &= 0b1101;
                 nodes[node_y - 1][node_x] &= 0b0111;
-                // mvwprintw(win, win_y - 1, win_x, " ");
                 Maze::dfs(node_y - 1, node_x);
             }
             break;
@@ -150,7 +150,6 @@ void Maze::dfs(int node_y, int node_x) {
                 }
                 nodes[node_y][node_x] &= 0b1011;
                 nodes[node_y][node_x - 1] &= 0b1110;
-                // mvwprintw(win, win_y, win_x - 1, " ");
                 Maze::dfs(node_y, node_x - 1);
             }
             break;
@@ -165,7 +164,6 @@ void Maze::dfs(int node_y, int node_x) {
                 }
                 nodes[node_y][node_x] &= 0b0111;
                 nodes[node_y + 1][node_x] &= 0b1101;
-                //mvwprintw(win, win_y + 1, win_x, " ");
                 Maze::dfs(node_y + 1, node_x);
             }
             break;
@@ -176,6 +174,41 @@ void Maze::dfs(int node_y, int node_x) {
     return;
 }
 
-void Maze::movePlayer(int y, int x) {
-    mvwprintw(win, player_y, player_x, " ");
+void Maze::movePlayer() {
+    int key_input = getch();
+    switch (key_input)
+    {
+    case KEY_LEFT:
+        if (!(LEFT_MASK & nodes[player_node_y][player_node_x])) {
+            --player_node_x;
+        }
+        break;
+    case KEY_RIGHT:
+        if (!(RIGHT_MASK & nodes[player_node_y][player_node_x])) {
+            ++player_node_x;
+        }
+        break;
+    case KEY_UP:
+        if (!(UP_MASK & nodes[player_node_y][player_node_x])) {
+            --player_node_y;
+        }
+        break;
+    case KEY_DOWN:
+        if (!(DOWN_MASK & nodes[player_node_y][player_node_x])) {
+            ++player_node_y;
+        }
+        break;
+    default:
+        break;
+    }
+    return;
+}
+
+bool Maze::isSolved() {
+    if (player_node_x == nodesWidth - 1 && player_node_y == nodesHeight - 1) {
+        return true;
+    }
+    else {
+        return false;
+    }
 }

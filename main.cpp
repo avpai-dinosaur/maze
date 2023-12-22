@@ -15,12 +15,25 @@ int main(int argv, char** argc)
 
     // Start ncurses
     initscr();
+    keypad(stdscr, TRUE);
+    cbreak();
+    noecho();
 
+    // Create Maze
     Maze maze(mazeHeight, mazeWidth);
+    Maze maze2(mazeHeight, mazeWidth);
     maze.draw();
     maze.dfs(0, 0);
     maze.draw();
-    
+
+    // main game loop
+    while(!maze.isSolved()) {
+        maze.movePlayer();
+        maze.draw();
+    }
+
+    maze.clear();
+    maze.printWinMessage();
     getch();
 
     // end ncurses
