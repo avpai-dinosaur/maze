@@ -7,7 +7,7 @@ using namespace std;
 int main(int argv, char** argc) 
 {
     if (argv != 3) {
-        std::cerr << "Error, usage is main.exe [maze height] [maze width]" << endl; 
+        std::cerr << "Error, usage is maze [maze height] [maze width]" << endl; 
         return 1;
     }
     int mazeHeight = atoi(argc[1]);
@@ -18,9 +18,6 @@ int main(int argv, char** argc)
 
     Maze maze(mazeHeight, mazeWidth);
     maze.draw();
-    std::srand ( unsigned ( std::time(0) ) );
-    getch();
-
     maze.dfs(0, 0);
     maze.draw();
     

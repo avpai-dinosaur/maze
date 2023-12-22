@@ -21,6 +21,8 @@ Maze::~Maze() {
 }
 
 void Maze::init() {
+    std::srand ( unsigned ( std::time(0) ) );
+
     nodes.resize(nodesHeight);
     for (int row = 0; row < nodesHeight; ++row) {
         nodes[row].resize(nodesWidth, 0b1111);
@@ -53,17 +55,29 @@ void Maze::drawNode(int node_y, int node_x) {
     if (mask & node_val) {
         mvwprintw(win, win_y, win_x + 1, "#");
     }
+    else {
+        mvwprintw(win, win_y, win_x + 1, " ");
+    }
     mask = mask << 1;
     if (mask & node_val) {
         mvwprintw(win, win_y - 1, win_x, "#");
     }
+    else {
+        mvwprintw(win, win_y - 1, win_x, " ");
+    }
     mask = mask << 1;
     if (mask & node_val) {
         mvwprintw(win, win_y, win_x - 1, "#");
+    }
+    else {
+        mvwprintw(win, win_y, win_x - 1, " ");
     } 
     mask = mask << 1;
     if (mask & node_val) {
         mvwprintw(win, win_y + 1, win_x, "#");
+    }
+    else {
+        mvwprintw(win, win_y + 1, win_x, " ");
     }
 
     // Add borders
@@ -159,6 +173,7 @@ void Maze::dfs(int node_y, int node_x) {
             break;
         }
     }
+    return;
 }
 
 void Maze::movePlayer(int y, int x) {
