@@ -3,6 +3,7 @@
 #include <utility>
 #include <stack>
 #include <string>
+#include <string.h>
 #include <random>
 #include <algorithm>
 #include <ctime>
@@ -58,15 +59,10 @@ public:
 
     // returns if maze is solved or not
     bool isSolved();
-
-    void clear() {
+    
+    void printWinMessage(const char * message) {
         wclear(win);
-        wrefresh(win);
-        return;
-    }
-
-    void printWinMessage() {
-        wprintw(win, "YOU WIN!");
+        mvwprintw(win, winHeight / 2, (winWidth - strlen(message)) / 2  , message);
         wrefresh(win);
         return;
     }

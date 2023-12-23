@@ -16,6 +16,7 @@ int main(int argv, char** argc)
     // Start ncurses
     initscr();
     keypad(stdscr, TRUE);
+    curs_set(0);
     cbreak();
     noecho();
 
@@ -32,8 +33,7 @@ int main(int argv, char** argc)
         maze.draw();
     }
 
-    maze.clear();
-    maze.printWinMessage();
+    maze.printWinMessage("You WIN!");
     getch();
 
     // end ncurses
