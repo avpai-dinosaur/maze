@@ -1,28 +1,6 @@
 # Maze Generator
 This is a command line application which generates a random maze given height and width dimensions. The maze can then be solved by moving a simple player icon to the bottom right corner.
 
-♯♯♯♯♯♯♯♯♯♯♯♯♯♯♯♯♯♯♯♯♯♯♯♯♯♯♯♯♯♯♯♯♯♯♯♯♯♯♯♯♯
-♯o  ♯           ♯           ♯           ♯
-♯♯♯ ♯ ♯ ♯♯♯♯♯♯♯ ♯♯♯♯♯ ♯♯♯♯♯ ♯ ♯♯♯♯♯♯♯♯♯ ♯
-♯   ♯ ♯   ♯   ♯ ♯   ♯ ♯     ♯     ♯   ♯ ♯
-♯ ♯♯♯♯♯♯♯ ♯ ♯♯♯ ♯ ♯ ♯ ♯♯♯♯♯♯♯♯♯ ♯♯♯ ♯ ♯ ♯
-♯ ♯     ♯ ♯     ♯ ♯   ♯         ♯   ♯ ♯ ♯
-♯ ♯ ♯ ♯ ♯ ♯ ♯♯♯♯♯ ♯♯♯♯♯ ♯♯♯♯♯♯♯♯♯ ♯♯♯ ♯ ♯
-♯ ♯ ♯ ♯   ♯   ♯   ♯     ♯ ♯   ♯   ♯   ♯ ♯
-♯ ♯♯♯ ♯♯♯♯♯♯♯ ♯ ♯♯♯ ♯♯♯♯♯ ♯ ♯ ♯ ♯♯♯♯♯ ♯ ♯
-♯     ♯     ♯ ♯           ♯ ♯   ♯   ♯   ♯
-♯♯♯♯♯♯♯♯♯♯♯ ♯ ♯♯♯♯♯♯♯♯♯♯♯ ♯ ♯♯♯♯♯ ♯ ♯♯♯ ♯
-♯       ♯   ♯       ♯ ♯   ♯       ♯ ♯   ♯
-♯ ♯♯♯ ♯ ♯ ♯♯♯♯♯♯♯♯♯ ♯ ♯ ♯♯♯♯♯♯♯♯♯♯♯ ♯ ♯♯♯
-♯ ♯ ♯ ♯   ♯       ♯ ♯ ♯   ♯   ♯   ♯ ♯ ♯ ♯
-♯ ♯ ♯ ♯♯♯♯♯ ♯ ♯♯♯♯♯ ♯ ♯♯♯ ♯ ♯♯♯ ♯ ♯ ♯ ♯ ♯
-♯   ♯     ♯ ♯       ♯       ♯   ♯   ♯   ♯
-♯♯♯ ♯♯♯♯♯ ♯ ♯♯♯♯♯♯♯♯♯♯♯♯♯♯♯ ♯ ♯♯♯♯♯♯♯♯♯ ♯
-♯ ♯   ♯ ♯   ♯     ♯   ♯   ♯ ♯ ♯   ♯   ♯ ♯
-♯ ♯♯♯ ♯ ♯♯♯♯♯♯♯ ♯ ♯ ♯ ♯ ♯ ♯♯♯ ♯ ♯♯♯ ♯ ♯ ♯
-♯               ♯   ♯   ♯     ♯     ♯   ♯
-♯♯♯♯♯♯♯♯♯♯♯♯♯♯♯♯♯♯♯♯♯♯♯♯♯♯♯♯♯♯♯♯♯♯♯♯♯♯♯♯♯
-
 ## Getting Started
 The following instruction aim to help get a copy of this project running on your local machine.
 
