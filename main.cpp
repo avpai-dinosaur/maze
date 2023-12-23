@@ -24,6 +24,9 @@ int main(int argv, char** argc)
     Maze maze(mazeHeight, mazeWidth);
     Maze maze2(mazeHeight, mazeWidth);
     maze.draw();
+
+    getch();
+
     maze.dfs(0, 0);
     maze.draw();
 

@@ -1,0 +1,54 @@
+Logo(?):
+                                  ________    __________
+     / /\      / /\        / /\  /_____/ /   / /_______/
+    / /\ \    / /\ \      / /\ \      / /   / /_______
+   / /  \ \  / /  \ \    / /__\ \    / /   / /_______/
+  / /    \ \/ /    \ \  / /____\ \  / /   / /       
+ / /      \ \/      \ \/ /      \ \/ /___/ /_______ 
+/ /                  \/ /        \/_____/_________/
+
+
+Grid Designs:
+#########
+# # # # #  
+#########
+# # # # #
+######### 
+
++----+----+----+----+
+|    |    |    |    |
++----+----+----+----+
+|    |    |    |    |
++----+----+----+----+
+|    |    |    |    |
++----+----+----+----+
+
++--+ +---+ +----+
+|  | |   | | :\ |
++--+ +---+ +----+
+
+Characters:
+:) - happy
+;) - winky
+XD - manic
+:{ - mustache
+:> - bird
+:3 - child
+:o - surprised
+:( - sad
+:P - derp
+:Y - chatty
+:/ - apathetic
+:() - hungry
+
+objects:
+o - coin
+
+Ideas:
+- Every time player comes in contact with character must go through character's trial maze
+    -> e.g. mustache is for job interview and spawns resume enemies
+
+
+
+
+ 

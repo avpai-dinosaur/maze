@@ -34,58 +34,54 @@ void Maze::init() {
     }
 
     winHeight = 2 * nodesHeight + 1;
-    winWidth = 2 * nodesWidth + 1;
+    winWidth = 5 * nodesWidth + 1;
     win = newwin(winHeight, winWidth, 0, 0);
     // keypad(win, TRUE);
     refresh();
 }
 
 std::pair<int, int> Maze::nodeToWinCoordinates(int node_y, int node_x) {
-    return {2 * node_y + 1, 2 * node_x + 1};
+    return {2 * node_y + 1, 5 * node_x + 1};
 }
 
 void Maze::drawNode(int node_y, int node_x) {
     std::pair<int, int> winCoords = nodeToWinCoordinates(node_y, node_x);
     int win_y = winCoords.first;
     int win_x = winCoords.second;
-    mvwprintw(win, win_y, win_x, " ");
-    int mask = 0b0001;
+    mvwprintw(win, win_y, win_x, "    ");
     int node_val = nodes[node_y][node_x];
 
     // Add walls in counter clockwise starting with right wall
-    if (mask & node_val) {
-        mvwprintw(win, win_y, win_x + 1, "#");
+    if (RIGHT_MASK & node_val) {
+        mvwprintw(win, win_y, win_x + 4, "|");
     }
     else {
-        mvwprintw(win, win_y, win_x + 1, " ");
+        mvwprintw(win, win_y, win_x + 4, " ");
     }
-    mask = mask << 1;
-    if (mask & node_val) {
-        mvwprintw(win, win_y - 1, win_x, "#");
+    if (UP_MASK & node_val) {
+        mvwprintw(win, win_y - 1, win_x, "----");
     }
     else {
-        mvwprintw(win, win_y - 1, win_x, " ");
+        mvwprintw(win, win_y - 1, win_x, "    ");
     }
-    mask = mask << 1;
-    if (mask & node_val) {
-        mvwprintw(win, win_y, win_x - 1, "#");
+    if (LEFT_MASK & node_val) {
+        mvwprintw(win, win_y, win_x - 1, "|");
     }
     else {
         mvwprintw(win, win_y, win_x - 1, " ");
-    } 
-    mask = mask << 1;
-    if (mask & node_val) {
-        mvwprintw(win, win_y + 1, win_x, "#");
+    }
+    if (DOWN_MASK & node_val) {
+        mvwprintw(win, win_y + 1, win_x, "----");
     }
     else {
-        mvwprintw(win, win_y + 1, win_x, " ");
+        mvwprintw(win, win_y + 1, win_x, "    ");
     }
 
-    // Add borders
-    mvwprintw(win, win_y - 1, win_x - 1, "#");
-    mvwprintw(win, win_y + 1, win_x - 1, "#");
-    mvwprintw(win, win_y - 1, win_x + 1, "#");
-    mvwprintw(win, win_y + 1, win_x + 1, "#");
+    // Add corners
+    mvwprintw(win, win_y - 1, win_x - 1, "+");
+    mvwprintw(win, win_y + 1, win_x - 1, "+");
+    mvwprintw(win, win_y - 1, win_x + 4, "+");
+    mvwprintw(win, win_y + 1, win_x + 4, "+");
 }
 
 void Maze::draw() {
@@ -97,7 +93,7 @@ void Maze::draw() {
 
     int player_win_y = nodeToWinCoordinates(player_node_y, player_node_x).first;
     int player_win_x = nodeToWinCoordinates(player_node_y, player_node_x).second;
-    mvwprintw(win, player_win_y, player_win_x, "o");
+    mvwprintw(win, player_win_y, player_win_x, " :/ ");
     wrefresh(win);
 }
 

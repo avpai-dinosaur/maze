@@ -59,7 +59,7 @@ public:
 
     // returns if maze is solved or not
     bool isSolved();
-    
+
     void printWinMessage(const char * message) {
         wclear(win);
         mvwprintw(win, winHeight / 2, (winWidth - strlen(message)) / 2  , message);
