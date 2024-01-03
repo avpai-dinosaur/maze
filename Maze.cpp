@@ -35,7 +35,16 @@ void Maze::init() {
 
     winHeight = 2 * nodesHeight + 1;
     winWidth = 5 * nodesWidth + 1;
-    win = newwin(winHeight, winWidth, 0, 0);
+
+    // calculate for a center placement of the window
+    int stdscr_row;
+    int stdscr_col;
+    int start_x;
+    int start_y;
+    getmaxyx(stdscr, stdscr_row, stdscr_col);
+    start_x = (stdscr_col - winWidth) / 2;
+    start_y = (stdscr_row - winHeight) / 2;
+    win = newwin(winHeight, winWidth, start_y, start_x);
     // keypad(win, TRUE);
     refresh();
 }
