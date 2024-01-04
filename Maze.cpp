@@ -45,7 +45,6 @@ void Maze::init() {
     start_x = (stdscr_col - winWidth) / 2;
     start_y = (stdscr_row - winHeight) / 2;
     win = newwin(winHeight, winWidth, start_y, start_x);
-    // keypad(win, TRUE);
     refresh();
 }
 

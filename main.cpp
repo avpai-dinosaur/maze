@@ -22,7 +22,6 @@ int main(int argv, char** argc)
 
     // Create Maze
     Maze maze(mazeHeight, mazeWidth);
-    Maze maze2(mazeHeight, mazeWidth);
     maze.draw();
 
     getch();
