@@ -22,7 +22,7 @@ private:
     int player_node_y;
     int player_node_x;
     bool solved;
-    WINDOW* win;
+    WINDOW *win;
 
     const int UP_MASK = 0b0010;
     const int DOWN_MASK = 0b1000;
@@ -40,10 +40,11 @@ private:
     void drawNode(int node_y, int node_x);
 
     // random generator function:
-    static int myrandom (int i) { return std::rand()%i;}
+    static int myrandom(int i) { return std::rand() % i; }
 
 public:
     Maze();
+
     Maze(int height_in, int width_in);
     ~Maze();
 
@@ -60,9 +61,10 @@ public:
     // returns if maze is solved or not
     bool isSolved();
 
-    void printWinMessage(const char * message) {
+    void printWinMessage(const char *message)
+    {
         wclear(win);
-        mvwprintw(win, winHeight / 2, (winWidth - strlen(message)) / 2  , message);
+        mvwprintw(win, winHeight / 2, (winWidth - strlen(message)) / 2, message);
         wrefresh(win);
         return;
     }
